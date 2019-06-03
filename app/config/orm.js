@@ -24,8 +24,17 @@ function objToSql(ob) { //converts objects into SQL readable strings
     return arr.toString();
   }
 let orm = {
+    all: function(table, cb) {
+      let query = `SELECT * FROM + ${table} + ;`;
+      connection.query(query, function(err, result) {
+        if (err) {
+          throw err;
+        }
+        cb(result);
+      });
+    },
     create: function(table, cols, vals, cb) {
-        let query = `INSERT INTO  + ${table} + (${cols.toString()}) VALUES (?, ?) `;
+        let query = `INSERT INTO  + ${table} + (${cols.toString()}) VALUES (?, ?) ;`;
         console.log(queryString);
         connection.query(query, function(err, result) {
             if (err) {throw (err)} else {
@@ -36,7 +45,7 @@ let orm = {
 
     },
     update: function(table, objColVals, condition, cb) {
-        var query = `UPDATE + ${table} + SET + ${objToSql(objColVals)} + WHERE ${condition}`;
+        var query = `UPDATE + ${table} + SET + ${objToSql(objColVals)} + WHERE ${condition};`;
    
         console.log(queryString);
         connection.query(query, function(err, result) {
