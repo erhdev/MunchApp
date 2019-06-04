@@ -1,4 +1,5 @@
-$(function() { $('#submit').on('click', function() {
+$(function() { 
+    $('#submit').on('click', function() {
     event.preventDefault();
     let food = {
         name: $('#userInput').val(),
