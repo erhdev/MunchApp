@@ -1,10 +1,8 @@
 var express = require("express");
-
+var path = require('path');
 var PORT = process.env.PORT || 2019;
-
 var hbars = require("express-handlebars");
-
-var routes = require("./app/controller/controller");
+var routes = require("./controller/controller");
 
 var app = express();
 app.use(express.static("public"));
@@ -14,6 +12,7 @@ app.use(express.json());
 
 app.engine("handlebars", hbars({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+app.set('views', path.join(__dirname, "views"))
 
 
 

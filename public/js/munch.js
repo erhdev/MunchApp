@@ -1,5 +1,4 @@
-$(function() { 
-    $('#submit').on('click', function() {
+$('#submit').on('click', function() {
     event.preventDefault();
     let food = {
         name: $('#userInput').val(),
@@ -12,15 +11,14 @@ $(function() {
         location.reload()
     })
 }
-$('.devour').on('click', function(){
+$('.devour').on('click', function() {
     let id = $(this).data('id').trim();
     let devoured = {munched: true};
 
     $.ajax('api/munch' + id, {
         type: 'PUT',
         data: devoured
-    }).then(function(){
+    }, function(){
         location.reload();
     })
-})
 }
