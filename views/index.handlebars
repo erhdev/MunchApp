@@ -1,0 +1,25 @@
+<h1>Cats!</h1>
+
+<h2>Food to be Eaten</h2>
+
+<ol id = 'unmunched-list'>
+  {{#each food}}
+    {{#unless munched}}
+      {{> food/food-block munched=false}}
+    {{/unless}}
+  {{/each}}
+</ol>
+
+<h2>Food Already Eaten</h2>
+
+<ol id = 'munched-list'>
+  {{#each food}}
+    {{#if munched}}
+      {{> food/food-block munched=true}}
+    {{/if}}
+  {{/each}}
+</ol>
+
+<h1>Add Some Food!</h1>
+<input type='text' id="userInput">
+<button id= 'submit'>Cook your food</button>
