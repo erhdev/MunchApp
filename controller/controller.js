@@ -2,9 +2,8 @@ var express = require("express");
 
 var router = express.Router();
 
-var munch = require("../models/munch.js");
+var munch = require("../model/munch");
 
-// Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
   munch.selectAll(function(data) {
     var results = {
